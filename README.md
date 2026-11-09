@@ -58,3 +58,10 @@ python -m pytest -v
 
 ## Security note
 This is a learning project, not a production-ready HR system. Before deploying it, add authentication, CSRF protection, secure configuration, authorization, migrations, and stronger validation.
+
+
+
+## Screenshots
+
+![Dashboard](screenshots/dashboardEMP.png)
+![Add Employee](screenshots/dashboardEMP.png)
