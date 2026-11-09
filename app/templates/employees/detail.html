@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ employee.full_name }} · PeopleDesk{% endblock %}
+{% block page_heading %}Employee profile{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><h2>{{ employee.full_name }}</h2><p>Employee ID #{{ employee.id }} · {{ employee.position }}</p></div><div class="actions"><a class="btn btn-light" href="{{ url_for('employees.employee_list') }}">Back</a><a class="btn btn-primary" href="{{ url_for('employees.employee_edit', employee_id=employee.id) }}">Edit employee</a></div></div>
+<section class="panel profile-panel"><div class="profile-hero"><span class="profile-avatar">{{ employee.first_name[0] }}{{ employee.last_name[0] }}</span><div><h2>{{ employee.full_name }}</h2><p>{{ employee.position }} · {{ employee.department }}</p></div></div><div class="detail-grid"><div><small>EMAIL ADDRESS</small><strong>{{ employee.email }}</strong></div><div><small>PHONE NUMBER</small><strong>{{ employee.phone or 'Not provided' }}</strong></div><div><small>DEPARTMENT</small><strong>{{ employee.department }}</strong></div><div><small>MONTHLY SALARY</small><strong>{{ "%.2f"|format(employee.salary) }}</strong></div><div><small>HIRE DATE</small><strong>{{ employee.hire_date.strftime('%B %d, %Y') }}</strong></div><div><small>EMPLOYEE ID</small><strong>#{{ employee.id }}</strong></div></div></section>
+{% endblock %}

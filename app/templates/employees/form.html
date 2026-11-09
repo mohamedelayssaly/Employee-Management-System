@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if employee else 'Add' }} employee · PeopleDesk{% endblock %}
+{% block page_heading %}{{ 'Edit employee' if employee else 'Add employee' }}{% endblock %}
+{% block content %}
+<div class="form-layout"><section class="panel form-panel"><div class="panel-heading"><div><h3>Employee information</h3><p>Fields marked with * are required.</p></div></div>
+<form method="post" class="employee-form">
+<div class="form-grid">
+<label>First name *<input name="first_name" required value="{{ request.form.get('first_name', employee.first_name if employee else '') }}" placeholder="e.g. Alex"></label>
+<label>Last name *<input name="last_name" required value="{{ request.form.get('last_name', employee.last_name if employee else '') }}" placeholder="e.g. Morgan"></label>
+<label>Email address *<input type="email" name="email" required value="{{ request.form.get('email', employee.email if employee else '') }}" placeholder="alex@company.com"></label>
+<label>Phone number<input name="phone" value="{{ request.form.get('phone', employee.phone if employee else '') }}" placeholder="+1 555 0100"></label>
+<label>Department *<input name="department" required value="{{ request.form.get('department', employee.department if employee else '') }}" placeholder="e.g. Engineering"></label>
+<label>Job title *<input name="position" required value="{{ request.form.get('position', employee.position if employee else '') }}" placeholder="e.g. Python Developer"></label>
+<label>Monthly salary *<input type="number" min="0" step="0.01" name="salary" required value="{{ request.form.get('salary', employee.salary if employee else '') }}" placeholder="5000.00"></label>
+<label>Hire date *<input type="date" name="hire_date" required value="{{ request.form.get('hire_date', employee.hire_date.isoformat() if employee else today) }}"></label>
+</div>
+<div class="form-actions"><a class="btn btn-light" href="{{ url_for('employees.employee_list') }}">Cancel</a><button class="btn btn-primary" type="submit">{{ 'Save changes' if employee else 'Create employee' }}</button></div>
+</form></section><aside class="tip-card"><div class="tip-icon">✦</div><h3>Good data in, good insights out.</h3><p>Keep employee records accurate. A valid email address must be unique, and salary cannot be negative.</p></aside></div>
+{% endblock %}

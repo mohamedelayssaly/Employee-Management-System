@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block title %}Not found · PeopleDesk{% endblock %}
+{% block page_heading %}Page not found{% endblock %}
+{% block content %}<section class="panel empty-state"><div class="empty-icon">?</div><h2>We couldn't find that employee.</h2><p>The record may have been removed or the URL may be incorrect.</p><a class="btn btn-primary" href="{{ url_for('employees.employee_list') }}">Back to employees</a></section>{% endblock %}
